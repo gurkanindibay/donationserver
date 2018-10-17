@@ -6,9 +6,9 @@ import javax.persistence.*;
 
 @Entity
 @Data
-@SequenceGenerator(name="donation_institution_seq", allocationSize=100)
 public class DonationInstitution {
-    @GeneratedValue(strategy= GenerationType.SEQUENCE, generator="donation_institution_seq")
+    @SequenceGenerator(name="donation_institution_gen", allocationSize=100, sequenceName = "donation_institution_seq")
+    @GeneratedValue(strategy= GenerationType.SEQUENCE, generator="donation_institution_gen")
     @Id private Integer id;
     private String name;
 }

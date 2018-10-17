@@ -1,12 +1,15 @@
 package org.donationtracker.donationserver.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
+import lombok.Data;
 
+import javax.persistence.*;
+
+@Data
 @Entity
 public class Donator {
-    @SequenceGenerator(name="donation_institution_seq")
+
+    @SequenceGenerator(name = "donator_gen",  allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "donator_gen")
     @Id private Integer id;
     private String name;
 
