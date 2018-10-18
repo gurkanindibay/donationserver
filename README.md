@@ -9,6 +9,11 @@ Changed encoding for messages files
 Ctrl+Alt+S search encoding select 
 Default encoding for properties files
 
-TODO 
+TODO
 Actuator Integration
 https://www.baeldung.com/spring-boot-actuators
+
+TODO
+JPA Auditing
+https://programmingmitra.blogspot.com/2017/02/automatic-spring-data-jpa-auditing-saving-CreatedBy-createddate-lastmodifiedby-lastmodifieddate-automatically.html
+(Problem reqeust.getPrincipal stores string not object)
