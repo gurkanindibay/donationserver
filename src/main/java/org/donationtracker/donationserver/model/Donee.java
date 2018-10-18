@@ -6,10 +6,10 @@ import javax.persistence.*;
 
 @Entity
 @Data
-public class Donee {
+public class Donee extends ModifiableEntity{
     @SequenceGenerator(name="donee_gen", allocationSize=100, sequenceName = "donee_seq")
     @GeneratedValue(strategy= GenerationType.SEQUENCE, generator="donee_gen")
-    @Id private Integer id;
+    @Id private Long id;
     @Column(nullable = false)
     private String name;
     @Column(nullable = false)

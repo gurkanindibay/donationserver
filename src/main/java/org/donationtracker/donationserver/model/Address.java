@@ -6,11 +6,11 @@ import javax.persistence.*;
 
 @Data
 @Entity
-public class Address {
+public class Address extends ModifiableEntity{
     @Id
     @SequenceGenerator(name = "SEQ_Address_GEN", sequenceName = "SEQ_Address", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_Address_GEN")
-    private Integer id;
+    private Long id;
     private String detail;
 
     @JoinColumn(name = "bystreet_id", referencedColumnName = "ID")
