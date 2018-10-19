@@ -13,7 +13,7 @@ TODO
 Actuator Integration
 https://www.baeldung.com/spring-boot-actuators
 
-TODO
+
 JPA Auditing
 https://programmingmitra.blogspot.com/2017/02/automatic-spring-data-jpa-auditing-saving-CreatedBy-createddate-lastmodifiedby-lastmodifieddate-automatically.html
-(Problem reqeust.getPrincipal stores string not object)
+anonymous user is added to db so anaonymous user could be audited
