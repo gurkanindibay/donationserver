@@ -70,13 +70,14 @@ public class User extends ModifiableEntity implements UserDetails {
     private Boolean isEnabled = true;
 
     @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private Language language;
 
-    @Column
-    private Integer failedLoginCount;
+    @Column(nullable = false)
+    private Integer failedLoginCount=0;
 
-    @Column
-    private String token;
+    @Column(nullable = false)
+    private String token="-";
 
     @ManyToOne
     @JoinColumn(name = "ROLE_ID")

@@ -56,7 +56,7 @@ public class CustomDbAuthenticationProvider extends DaoAuthenticationProvider {
     private void updateUserFailedLoginCount(String name) {
         Optional<User> user = userService.getUser(name);
         if (user.isPresent()) {
-            if (user.get().getFailedLoginCount() == 3) {
+            if (Optional.of(user.get().getFailedLoginCount()).orElse(0) == 3) {
                 userService.lockUserWithId(user.get().getId());
             } else {
                 userService.increaseFailedLoginCountWithId(user.get().getId());
@@ -65,7 +65,7 @@ public class CustomDbAuthenticationProvider extends DaoAuthenticationProvider {
 
         loggerUtil.saveUserOperation(UserOperationType.LOGIN_FAILED,
                 "%USEROPERATIONS.DESC.BAD_CREDENTIALS_EXCEPTION%\n%USEROPERATIONS.DESC.USERNAME%" + name,
-                user.orElseGet(() -> userService.getAnonymousUser()));
+                user.orElseGet(userService::getAnonymousUser));
     }
 
 
