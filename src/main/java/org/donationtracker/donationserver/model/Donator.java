@@ -1,9 +1,12 @@
 package org.donationtracker.donationserver.model;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import org.donationtracker.donationserver.core.model.ModifiableEntity;
 
 import javax.persistence.*;
 
+@EqualsAndHashCode(callSuper = true)
 @Data
 @Entity
 public class Donator extends ModifiableEntity {

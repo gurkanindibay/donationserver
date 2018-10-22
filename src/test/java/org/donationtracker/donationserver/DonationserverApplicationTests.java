@@ -23,7 +23,7 @@ public class DonationserverApplicationTests {
         cityRepository.save(city);
 
         List<City> cityList =  cityRepository.findAll();
-        cityList.stream().forEach(c-> System.out.println(c.getName()));
+        cityList.forEach(c-> System.out.println(c.getName()));
     }
 
 }

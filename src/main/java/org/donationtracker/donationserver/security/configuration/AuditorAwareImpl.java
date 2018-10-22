@@ -1,13 +1,11 @@
-package org.donationtracker.donationserver.configuration;
+package org.donationtracker.donationserver.security.configuration;
 
-import org.donationtracker.donationserver.model.User;
-import org.donationtracker.donationserver.service.UserService;
-import org.hibernate.Session;
+import org.donationtracker.donationserver.security.model.User;
+import org.donationtracker.donationserver.security.service.UserService;
 import org.springframework.data.domain.AuditorAware;
 import org.springframework.security.authentication.AuthenticationCredentialsNotFoundException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 
@@ -17,9 +15,9 @@ import java.util.Optional;
 @Component("auditorAware")
 public class AuditorAwareImpl implements AuditorAware<User> {
 
-    private UserService userService;
+    private final UserService userService;
 
-    private EntityManager entityManager;
+    private final EntityManager entityManager;
 
     public AuditorAwareImpl(UserService userService, EntityManager entityManager) {
 

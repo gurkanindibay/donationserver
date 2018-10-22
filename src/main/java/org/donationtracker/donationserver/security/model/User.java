@@ -1,9 +1,10 @@
-package org.donationtracker.donationserver.model;
+package org.donationtracker.donationserver.security.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import org.donationtracker.donationserver.core.model.ModifiableEntity;
 import org.donationtracker.donationserver.model.enums.Language;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.util.CollectionUtils;
@@ -18,7 +19,7 @@ import java.util.List;
 @Table(name = "SYS_USER")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @Data
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode(callSuper = true)
 public class User extends ModifiableEntity implements UserDetails {
 
     private static final long serialVersionUID = 1L;
@@ -71,6 +72,12 @@ public class User extends ModifiableEntity implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Language language;
 
+    @Column
+    private Integer failedLoginCount;
+
+    @Column
+    private String token;
+
     @ManyToOne
     @JoinColumn(name = "ROLE_ID")
     private Role role;
@@ -104,5 +111,7 @@ public class User extends ModifiableEntity implements UserDetails {
     public boolean isEnabled() {
         return isEnabled;
     }
+
+
 
 }

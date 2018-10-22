@@ -1,5 +1,7 @@
 package org.donationtracker.donationserver.model.enums;
 
+import org.donationtracker.donationserver.core.enums.BaseEnum;
+
 import java.util.Locale;
 
 public enum Language implements BaseEnum {

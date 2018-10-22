@@ -1,8 +1,9 @@
-package org.donationtracker.donationserver.model;
+package org.donationtracker.donationserver.security.model;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.donationtracker.donationserver.core.model.ModifiableEntity;
 
 import javax.persistence.*;
 import java.util.List;
@@ -12,7 +13,7 @@ import java.util.List;
 @NoArgsConstructor
 @Entity
 @Table(name="SYS_ROLE")
-public class Role extends ModifiableEntity   {
+public class Role extends ModifiableEntity {
 
 	private static final long serialVersionUID = 8298645230374842036L;
 

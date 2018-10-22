@@ -1,4 +1,4 @@
-package org.donationtracker.donationserver.model.enums;
+package org.donationtracker.donationserver.core.enums;
 
 public interface BaseEnum<VT> {
 

@@ -1,4 +1,4 @@
-package org.donationtracker.donationserver.model;
+package org.donationtracker.donationserver.core.model;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

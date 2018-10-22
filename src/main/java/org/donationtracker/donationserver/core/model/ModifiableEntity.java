@@ -1,9 +1,10 @@
-package org.donationtracker.donationserver.model;
+package org.donationtracker.donationserver.core.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.donationtracker.donationserver.security.model.User;
 import org.hibernate.envers.Audited;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
@@ -19,7 +20,7 @@ import java.util.Date;
 @NoArgsConstructor
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
-abstract class ModifiableEntity extends BaseEntity {
+public abstract class ModifiableEntity extends BaseEntity {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "CREATED_BY", referencedColumnName = "ID")

@@ -1,8 +1,9 @@
-package org.donationtracker.donationserver.model;
+package org.donationtracker.donationserver.security.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import org.donationtracker.donationserver.core.model.BaseEntity;
 import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;

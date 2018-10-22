@@ -11,7 +11,7 @@ import java.util.List;
 @Controller
 public class TestController {
 
-    private CityRepository cityRepository;
+    private final CityRepository cityRepository;
 
     public TestController (CityRepository cityRepository){
         this.cityRepository = cityRepository;

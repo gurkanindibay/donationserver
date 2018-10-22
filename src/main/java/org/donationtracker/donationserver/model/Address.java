@@ -1,12 +1,15 @@
 package org.donationtracker.donationserver.model;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import org.donationtracker.donationserver.core.model.ModifiableEntity;
 
 import javax.persistence.*;
 
 @Data
 @Entity
-public class Address extends ModifiableEntity{
+@EqualsAndHashCode(callSuper=true)
+public class Address extends ModifiableEntity {
     @Id
     @SequenceGenerator(name = "SEQ_Address_GEN", sequenceName = "SEQ_Address", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_Address_GEN")

@@ -22,7 +22,7 @@ public class FeaturesEndpoint {
     @Value("${git.commit.id.abbrev}")
     private String lastCommit;
 
-    private Map<String, String> features = new ConcurrentHashMap<>();
+    private final Map<String, String> features = new ConcurrentHashMap<>();
 
     @ReadOperation
     public Map<String, String> features() {
