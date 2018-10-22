@@ -20,10 +20,9 @@ import java.util.Optional;
 @ConditionalOnExpression("'${app.authentication.provider:DATABASE}'=='DATABASE'")
 public class CustomDbAuthenticationProvider extends DaoAuthenticationProvider {
 
-    //@Autowired
+
     private final UserService userService;
 
-    //@Autowired
     private final UserOperationLoggerUtil loggerUtil;
 
     public CustomDbAuthenticationProvider(UserService userService,UserOperationLoggerUtil loggerUtil,CustomDbUserDetailsService userDetailsService ){
@@ -38,12 +37,7 @@ public class CustomDbAuthenticationProvider extends DaoAuthenticationProvider {
         return new BCryptPasswordEncoder(5);
     }
 
-    //@Override
-    //protected void doAfterPropertiesSet() throws Exception {
-    //this.setUserDetailsService(userDetailsService);
-    //this.setPasswordEncoder(passwordEncoder());
-    //super.doAfterPropertiesSet();
-    //}
+
 
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
