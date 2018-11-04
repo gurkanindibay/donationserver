@@ -11,9 +11,11 @@ import javax.persistence.*;
 @Entity
 public class Donator extends ModifiableEntity {
 
-    @SequenceGenerator(name = "donator_gen",  allocationSize = 1)
+    @SequenceGenerator(name = "donator_gen", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "donator_gen")
-    @Id private Long id;
+    @Id
+    private Long id;
+
     private String name;
 
 }

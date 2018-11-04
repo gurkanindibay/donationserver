@@ -22,29 +22,29 @@ import java.util.Date;
 @EntityListeners(AuditingEntityListener.class)
 public abstract class ModifiableEntity extends BaseEntity {
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "CREATED_BY", referencedColumnName = "ID")
-	@CreatedBy
-	@Audited
-	@JsonIgnore
-	private User createdBy;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "CREATED_BY", referencedColumnName = "ID")
+    @CreatedBy
+    @Audited
+    @JsonIgnore
+    private User createdBy;
 
-	@Temporal(TemporalType.TIMESTAMP)
-	@CreatedDate
-	@Audited
-	private Date createdDate;
+    @Temporal(TemporalType.TIMESTAMP)
+    @CreatedDate
+    @Audited
+    private Date createdDate;
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "MODIFIED_BY", referencedColumnName = "ID")
-	@LastModifiedBy
-	@Audited
-	@JsonIgnore
-	private User lastModifiedBy;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "MODIFIED_BY", referencedColumnName = "ID")
+    @LastModifiedBy
+    @Audited
+    @JsonIgnore
+    private User lastModifiedBy;
 
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "MODIFIED_DATE")
-	@LastModifiedDate
-	@Audited
-	private Date lastModifiedDate;
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "MODIFIED_DATE")
+    @LastModifiedDate
+    @Audited
+    private Date lastModifiedDate;
 
 }

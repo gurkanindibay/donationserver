@@ -10,13 +10,14 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface UserRepository extends JpaRepository<User,Long> {
+public interface UserRepository extends JpaRepository<User, Long> {
+
     Optional<User> findFirstByUsername(String userName);
 
+    @Modifying
     @Query("update User set password = :password where token=:token")
     void updatePasswordWithToken(@Param("token") String token, @Param("password") String password);
 
-    Optional<User> findFirstByUsernameAndIsDeletedIsFalse(String userName);
 
     @Modifying
     @Query("update User set isAccountNonLocked = false where id= :userId")
@@ -26,6 +27,7 @@ public interface UserRepository extends JpaRepository<User,Long> {
     @Query("update User set failedLoginCount = failedLoginCount + 1 where id= :userId")
     void increaseFailedLoginCount(@Param("userId") Long userId);
 
+    Optional<User> findFirstByToken(String token);
 
 }
 

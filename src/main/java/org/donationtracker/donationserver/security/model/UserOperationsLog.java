@@ -1,6 +1,5 @@
 package org.donationtracker.donationserver.security.model;
 
-
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,8 +20,8 @@ import java.util.Date;
 public class UserOperationsLog extends BaseEntity {
 
     @Id
-    @SequenceGenerator( name = "SEQ_USER_OP_LOG_GEN", sequenceName = "SEQ_USER_OP_LOG", allocationSize = 1 )
-    @GeneratedValue( strategy = GenerationType.SEQUENCE, generator = "SEQ_USER_OP_LOG_GEN" )
+    @SequenceGenerator(name = "SEQ_USER_OP_LOG_GEN", sequenceName = "SEQ_USER_OP_LOG", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_USER_OP_LOG_GEN")
     private Long id;
 
     @Column(name = "OPERATION")
@@ -31,7 +30,7 @@ public class UserOperationsLog extends BaseEntity {
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdDate;
-    
+
     @JoinColumn(name = "USER_ID", referencedColumnName = "ID")
     @OneToOne(fetch = FetchType.LAZY)
     private User user;

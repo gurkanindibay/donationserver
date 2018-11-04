@@ -10,15 +10,16 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Date;
+
 /**
  * By default, the {@link BasicAuthenticationEntryPoint}  provisioned by Spring Security returns
  * a full page for a 401 Unauthorized response back to the client. This HTML representation
  * of the error renders well in a browser, but it not well suited for other scenarios,
  * such as a REST API where a json representation may be preferred.
- *
+ * <p>
  * The namespace is flexible enough for this new requirement as well – to address this –
  * the entry point can be overridden:
- *
+ * <p>
  * By writing directly to the HTTP Response we now have full control over the format
  * of the response body.
  * Source: https://www.baeldung.com/spring-security-basic-authentication
@@ -38,7 +39,8 @@ public class JsonBasicAuthenticationEntryPoint extends BasicAuthenticationEntryP
 
         PrintWriter writer = response.getWriter();
         writer.println(
-                "{\"timestamp\":"+ new Date().getTime()+",\"status\":401,\"error\":\"Unauthorized\",\"message\":\"" + authEx.getMessage() + "\"}");
+                "{\"timestamp\":" + new Date().getTime() + ",\"status\":401,\"error\":\"Unauthorized\",\"message\":\"" + authEx
+                        .getMessage() + "\"}");
     }
 
     @Override

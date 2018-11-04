@@ -1,7 +1,7 @@
 package org.donationtracker.donationserver.controller;
 
 import org.donationtracker.donationserver.model.City;
-import org.donationtracker.donationserver.repository.CityRepository;
+import org.donationtracker.donationserver.service.CityService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -11,10 +11,10 @@ import java.util.List;
 @Controller
 public class TestController {
 
-    private final CityRepository cityRepository;
+    private final CityService cityService;
 
-    public TestController (CityRepository cityRepository){
-        this.cityRepository = cityRepository;
+    public TestController(CityService cityService) {
+        this.cityService = cityService;
     }
 
     @GetMapping("/test")
@@ -22,13 +22,14 @@ public class TestController {
     public City test() {
         City city = new City();
         city.setName("Istanbul");
-        cityRepository.save(city);
+        cityService.save(city);
         return city;
     }
 
-    @GetMapping("/test2")
+
+    @GetMapping("/public")
     @ResponseBody
-    public List<City> test2() {
-        return cityRepository.findAll();
+    public List<City> publicCall() {
+        return cityService.findAll();
     }
 }

@@ -31,3 +31,6 @@ anonymous user is added to db so anaonymous user could be audited
 H2 Database Mixed Mode Implementation to access from Intellij
 https://stackoverflow.com/questions/28940912/connect-to-h2-database-using-intellij-database-client
 http://www.h2database.com/html/features.html#connection_modes
+
+TODO
+Exception Handling

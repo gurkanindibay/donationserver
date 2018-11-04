@@ -28,7 +28,8 @@ public class UserOperationLoggerUtil {
 
     public UserOperationType getOperationType(String entityName, UserOperationType operation) {
         for (UserOperationType type : UserOperationType.values()) {
-            if (type.getClazz() != null && entityName.equalsIgnoreCase(type.getClazz().getSimpleName()) && operation.name().equals(type.getOperation())) {
+            if (type.getClazz() != null && entityName.equalsIgnoreCase(type.getClazz().getSimpleName()) && operation.name()
+                    .equals(type.getOperation())) {
                 return type;
             }
         }
@@ -37,19 +38,19 @@ public class UserOperationLoggerUtil {
     }
 
     public void saveUserOperation(UserOperationType operationType, String description) {
-        if(auditorAware.getCurrentAuditor().isPresent())  saveOperationLog(operationType, description, auditorAware.getCurrentAuditor().get());
-        else log.warn("User does not exist for loogging");
+        if (auditorAware.getCurrentAuditor().isPresent())
+            saveOperationLog(operationType, description, auditorAware.getCurrentAuditor().get());
+        else
+            log.warn("User does not exist for loogging");
     }
 
     public void saveUserOperation(UserOperationType operationType, String description, User user) {
         saveOperationLog(operationType, description, user);
     }
 
-
     private void saveOperationLog(UserOperationType operationType, String description, User user) {
         UserOperationsLog sysUserOperationsLog = new UserOperationsLog();
         sysUserOperationsLog.setCreatedDate(new Date());
-        sysUserOperationsLog.setIsDeleted(false);
         sysUserOperationsLog.setOperation(operationType);
         sysUserOperationsLog.setDescription(description);
         sysUserOperationsLog.setUser(user);

@@ -2,12 +2,9 @@ package org.donationtracker.donationserver.core.enums;
 
 public interface BaseEnum<VT> {
 
-    VT getValue();
-
-
-	static <T extends Enum<T>> T valueOf(String name, T defaultVal) {
+    static <T extends Enum<T>> T valueOf(String name, T defaultVal) {
         try {
-            return Enum.valueOf(defaultVal.getDeclaringClass() , name);
+            return Enum.valueOf(defaultVal.getDeclaringClass(), name);
         } catch (IllegalArgumentException | NullPointerException e) {
             return defaultVal;
         }
@@ -23,4 +20,6 @@ public interface BaseEnum<VT> {
         }
         return null;
     }
+
+    VT getValue();
 }

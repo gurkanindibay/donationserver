@@ -11,14 +11,15 @@ public class DonationserverApplicationTests {
 
     //@Autowired
     private CityRepository cityRepository;
+
     //@Test
     public void contextLoads() {
         City city = new City();
         city.setName("Istanbul");
         cityRepository.save(city);
 
-        List<City> cityList =  cityRepository.findAll();
-        cityList.forEach(c-> System.out.println(c.getName()));
+        List<City> cityList = cityRepository.findAll();
+        cityList.forEach(c -> System.out.println(c.getName()));
     }
 
 }

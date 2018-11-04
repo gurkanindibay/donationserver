@@ -14,15 +14,15 @@ public class CustomDbUserDetailsService implements UserDetailsService {
 
     private final UserService userService;
 
-    public CustomDbUserDetailsService(UserService userService){
+    public CustomDbUserDetailsService(UserService userService) {
         this.userService = userService;
     }
-
 
     @Override
     public UserDetails loadUserByUsername(String username) {
         Optional<User> user = userService.getUser(username);
-        if (!user.isPresent()) throw new UsernameNotFoundException(username);
+        if (!user.isPresent())
+            throw new UsernameNotFoundException(username);
         return user.get();
     }
 

@@ -16,10 +16,9 @@ public class UserService {
 
     private final UserRepository userRepository;
 
-    public UserService(UserRepository userRepository){
+    public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
-
 
     @Transactional
     public void lockUserWithId(Long userId) {
@@ -32,7 +31,7 @@ public class UserService {
     }
 
     @Transactional
-    public void updatePassword(String token, String password)  {
+    public void updatePassword(String token, String password) {
 
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         String hashedPassword = passwordEncoder.encode(password);
@@ -40,15 +39,17 @@ public class UserService {
         userRepository.updatePasswordWithToken(token, hashedPassword);
 
     }
-    public Optional<User> getUser(String userName){
-        return userRepository.findFirstByUsernameAndIsDeletedIsFalse(userName);
+
+    public Optional<User> getUser(String userName) {
+        return userRepository.findFirstByUsername(userName);
     }
 
-    public User getAnonymousUser(){
-        Optional<User> user =  userRepository.findFirstByUsernameAndIsDeletedIsFalse(ANONYMOUS_USER);
-        if(user.isPresent()) return user.get();
-        else throw new UsernameNotFoundException("Anonymous user is not defined in the system. Please define the user info");
+    public User getAnonymousUser() {
+        Optional<User> user = userRepository.findFirstByUsername(ANONYMOUS_USER);
+        if (user.isPresent())
+            return user.get();
+        else
+            throw new UsernameNotFoundException("Anonymous user is not defined in the system. Please define the user info");
     }
-
 
 }
